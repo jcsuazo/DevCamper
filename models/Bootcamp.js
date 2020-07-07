@@ -17,6 +17,7 @@ const BootcampSchema = new Schema({
   website: {
     type: String,
     match: [
+      // eslint-disable-next-line no-useless-escape
       /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
       'Please use a valid URL with http or https',
     ],
@@ -28,6 +29,7 @@ const BootcampSchema = new Schema({
   email: {
     type: String,
     match: [
+      // eslint-disable-next-line no-useless-escape
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       'Please add a valid email',
     ],
