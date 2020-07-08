@@ -3,7 +3,8 @@ require('dotenv').config({
 });
 const express = require('express');
 const morgan = require('morgan');
-const colors = require('colors');
+require('colors');
+const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 // Connect to database
 connectDB();
@@ -14,8 +15,13 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+// Middlewares
+app.use(express.json());
 // Mount Routers
 app.use('/api/v1/bootcamps', require('./routes/bootcamps'));
+
+// Error handler
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
